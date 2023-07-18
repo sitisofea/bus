@@ -8,17 +8,48 @@
     <title>Bus</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+
+    <!-- Plugin styles -->
+    <link rel="stylesheet" href="{{ asset('css/bundle.css') }}" type="text/css">
+
+    @yield('head')
+
+    <!-- App styles (Main CSS) -->
+    <link rel="stylesheet" href="{{ asset('css/app.min.css?v=2.6') }}" type="text/css">
+    @yield('styles')
 </head>
 
 <body>
 
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container">
-            <a class="navbar-brand" href="{{ URL('/') }}">Login</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            @guest
+                <a class="navbar-brand" href="{{ URL('/') }}">Login</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            @else
+                <a class="navbar-brand" href="{{ URL('/') }}">MaraLiner</a>
+                <div class="horizontal-navigation">
+                    <ul>
+                        <li @if (request()->segment(1) == '') class="open" @endif>
+                            <a href="{{ route('dashboard') }}"><i class="ti-home mr-2"></i>
+                                Dashboard</a>
+                        </li>
+                        <li @if (request()->segment(1) == '') class="open" @endif>
+                            <a href="{{ route('sms.index') }}"><i class="ti-layers mr-2"></i>
+                                SMS</a>
+                        </li>
+                    </ul>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            @endguest
+
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto">
                     @guest
@@ -53,12 +84,16 @@
     </nav>
 
     <div class="container">
-        @yield('content')
+        <div class="px-3 py-5">
+            @yield('content')
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script>
+
+    @yield('script')
 </body>
 
 </html>
