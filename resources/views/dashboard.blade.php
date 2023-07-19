@@ -1,23 +1,63 @@
 @extends('layouts.auth')
 @section('styles')
     <style>
+        .piechart-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
         .piechart {
-            display: block;
-            position: relative;
             width: 290px;
             height: 290px;
             border-radius: 50%;
             background-image: conic-gradient(pink 70deg, lightblue 0 235deg, orange 0);
             color: #fff;
             font-size: 14px;
+            position: relative;
         }
 
-        .piechart .text-slice {
+        .piechart .text-slice-1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -20%) rotate(var(--rotate));
+            text-align: center;
+            width: 100px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-right: 50%;
+        }
+
+        .piechart .text-slice-2 {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) rotate(var(--rotate));
             text-align: center;
+            width: 100px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-right: 60%;
+        }
+
+        .piechart .text-slice-3 {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-20%, -80%) rotate(var(--rotate));
+            text-align: center;
+            width: 100px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-right: 30%;
         }
     </style>
 @endsection
@@ -75,18 +115,20 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <b>Satisfaction Experience</b>
+                    <b>Passengers' Satisfaction Experience</b>
                 </div>
                 <div class="card-body border">
-                    <div class="piechart">
-                        <div class="text-slice" style="--rotate: 35deg;">
-                            Satisfied: 40%
-                        </div>
-                        <div class="text-slice" style="--rotate: 130deg;">
-                            Neutral: 30%
-                        </div>
-                        <div class="text-slice" style="--rotate: 290deg;">
-                            Dissatisfied: 30%
+                    <div class="piechart-container">
+                        <div class="piechart">
+                            <div class="text-slice-1" style="--rotate: 35deg;">
+                                Satisfied: 40%
+                            </div>
+                            <div class="text-slice-2" style="--rotate: 135deg;">
+                                Neutral: 30%
+                            </div>
+                            <div class="text-slice-3" style="--rotate: 290deg;">
+                                Dissatisfied: 30%
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -150,10 +192,10 @@
 
         // Horizontal bar chart configuration
         const horizontalBarChartConfig = {
-            type: 'bar', 
+            type: 'bar',
             data: horizontalBarChartData,
             options: {
-                indexAxis: 'y', 
+                indexAxis: 'y',
                 scales: {
                     x: {
                         beginAtZero: true,

@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.min.css?v=2.6') }}" type="text/css">
 
     <!-- Icon -->
-    <link rel="stylesheet" href="path/to/ti-icons.css">
+    {{-- <link rel="stylesheet" href="path/to/ti-icons.css"> --}}
     @yield('styles')
 </head>
 

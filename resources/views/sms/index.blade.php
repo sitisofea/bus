@@ -1,6 +1,8 @@
 @extends('layouts.auth')
-@section('styles')
+@section('head')
     <link rel="stylesheet" href="path/to/ti-icons.css">
+    <link rel="stylesheet" href="path/to/themify-icons.css">
+    <link rel="stylesheet" href="path/to/typicons.css">
 @endsection
 
 @section('content')
@@ -45,12 +47,20 @@
                             @endif
                             <td>
                                 <a href="{{ route('sms.show', $sms->id) }}" class="btn btn-outline-primary btn-floating"
-                                    title="Show SMS"><i class="ti-new-window"></i></a>
+                                    title="Show SMS">
+                                    <small> Show </small>
+                                    {{-- <i class="ti-new-window"></i> --}}
+                                </a>
                                 <a href="{{ route('sms.edit', $sms->id) }}" class="btn btn-outline-success btn-floating"
-                                    title="Edit SMS"><i class="ti-pencil"></i></a>
+                                    title="Edit SMS">
+                                   <small> Edit </small>
+                                    {{-- <i class="ti-pencil"></i> --}}
+                                </a>
                                 <button type="button" data-toggle="modal" data-target="#delete-{{ $sms->id }}"
-                                    class="btn btn-outline-danger btn-floating" title="Delete SMS"><i
-                                        class="ti-trash"></i></button>
+                                    class="btn btn-outline-danger btn-floating" title="Delete SMS">
+                                    <small> Delete </small>
+                                    {{-- <i class="ti-trash"></i> --}}
+                                    </button>
                                 <div class="modal fade" id="delete-{{ $sms->id }}" tabindex="-1" role="dialog"
                                     aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -59,7 +69,7 @@
                                                 <h5 class="modal-title" id="exampleModalCenterTitle">Delete SMS</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
-                                                    <i class="ti-close"></i>
+                                                    <i class="ti-trash"></i>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
