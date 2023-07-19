@@ -1,14 +1,17 @@
 @extends('layouts.auth')
+@section('styles')
+    <link rel="stylesheet" href="path/to/ti-icons.css">
+@endsection
 
 @section('content')
     <div class="card">
         <div class="p-4">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="pull-left">
+                <div class="col-lg-12 margin-tb">
+                    <div class="float-start">
                         <h2>SMS Management</h2>
                     </div>
-                    <div class="pull-right">
+                    <div class="float-end">
                         <a class="btn btn-outline-success btn-uppercase" href='sms/create'><i class="ti-plus mr-2"></i>NEW
                             SMS</a>
                     </div>

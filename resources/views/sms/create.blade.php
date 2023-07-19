@@ -9,10 +9,10 @@
         <div class="p-4">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="pull-left">
+                    <div class="float-start">
                         <h2>Create SMS</h2>
                     </div>
-                    <div class="pull-right">
+                    <div class="float-end">
                         <a class="btn btn-outline-primary btn-uppercase" href="{{ route('sms.index') }}"> Back</a>
                     </div>
                 </div>
