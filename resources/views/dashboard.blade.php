@@ -4,15 +4,12 @@
         .piechart {
             display: block;
             position: relative;
-            /* Changed to relative */
             width: 290px;
             height: 290px;
             border-radius: 50%;
             background-image: conic-gradient(pink 70deg, lightblue 0 235deg, orange 0);
             color: #fff;
-            /* Text color */
             font-size: 14px;
-            /* Text font size */
         }
 
         .piechart .text-slice {
@@ -25,7 +22,7 @@
     </style>
 @endsection
 @section('content')
-    <div class="row justify-content-center w-100">
+    <div class="row">
         <div class="col-md-2">
             <div class="card">
                 <div class="card-header">
@@ -53,6 +50,18 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header">
+                    <b>Nationality of Passengers</b>
+                </div>
+                <div class="card-body border">
+                    <canvas id="horizontalBarChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row my-3">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
@@ -63,7 +72,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
                     <b>Satisfaction Experience</b>
@@ -83,17 +92,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header">
-                    <b>Nationality of Passengers</b>
-                </div>
-                <div class="card-body border">
-                    <canvas id="horizontalBarChart"></canvas>
-            </div>
-        </div>
     </div>
-    </div>
+    {{-- </div> --}}
 @endsection
 
 @section('script')
@@ -101,7 +101,7 @@
 
     {{-- BAR CHART --}}
     <script>
-        // Sample data for the bar chart (Replace with your actual data)
+        // data for the bar chart 
         const barChartData = {
             labels: ['January', 'February', 'March', 'April', 'May', 'June'],
             datasets: [{
@@ -136,7 +136,7 @@
 
     {{-- HORIZONTAL BAR CHART --}}
     <script>
-        // Sample data for the horizontal bar chart (Replace with your actual data)
+        // data for the horizontal bar chart 
         const horizontalBarChartData = {
             labels: ['Malaysian', 'Indonesian', 'Singaporean', 'Thai', 'Vietnamese'],
             datasets: [{
@@ -150,10 +150,10 @@
 
         // Horizontal bar chart configuration
         const horizontalBarChartConfig = {
-            type: 'bar', // Change to 'bar' instead of 'horizontalBar'
+            type: 'bar', 
             data: horizontalBarChartData,
             options: {
-                indexAxis: 'y', // Display the bar chart horizontally
+                indexAxis: 'y', 
                 scales: {
                     x: {
                         beginAtZero: true,
