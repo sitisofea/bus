@@ -9,6 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
+     <!-- Favicon -->
+     <link rel="shortcut icon" href="../../img/logoM.png" />
 
     <!-- Plugin styles -->
     <link rel="stylesheet" href="{{ asset('css/bundle.css') }}" type="text/css">
@@ -21,9 +23,12 @@
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container">
+            <a href="{{ url('/dashboard') }}">
+                <img class="logo" src="../../img/logoM.png" width="100" height=auto
+                    alt="logo">
+            </a>
             @guest
                 <a class="navbar-brand" href="{{ URL('/') }}">Login</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -31,19 +36,25 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             @else
-                <a class="navbar-brand" href="{{ URL('/') }}">MaraLiner</a>
-                <div class="horizontal-navigation">
-                    <ul>
-                        <li @if (request()->segment(1) == '') class="open" @endif>
-                            <a href="{{ route('dashboard') }}"><i class="ti-home mr-2"></i>
-                                Dashboard</a>
-                        </li>
-                        <li @if (request()->segment(1) == '') class="open" @endif>
-                            <a href="{{ route('sms.index') }}"><i class="ti-layers mr-2"></i>
-                                SMS</a>
-                        </li>
-                    </ul>
+                {{-- <a class="navbar-brand" href="{{ URL('/') }}">MaraLiner</a> --}}
+                <div class="row">
+                    <div class="col">
+                        <div class="horizontal-navigation">
+                            <ul class="nav">
+                                <li @if (request()->segment(1) == 'dashboard') class="open" @endif>
+                                {{-- <li class="nav-item @if (request()->segment(1) == '') active @endif"> --}}
+                                    <a class="nav-link text-dark" href="{{ route('dashboard') }}"><i class="ti-home mr-2"></i>Dashboard</a>
+                                </li>
+                                <li @if (request()->segment(1) == 'sms') class="open" @endif>
+                                {{-- <li class="nav-item @if (request()->segment(1) == '') active @endif"> --}}
+                                    <a class="nav-link text-dark" href="{{ route('sms.index') }}"><i class="ti-layers mr-2"></i>SMS</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+                
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -89,9 +100,9 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
-    </script>
+    </script> --}}
 
     @yield('script')
 </body>
