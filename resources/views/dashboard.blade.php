@@ -86,9 +86,9 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">
-                    <b>Nationality</b>
+                    <b>Nationality of Passengers</b>
                 </div>
-                <<div class="card-body border">
+                <div class="card-body border">
                     <canvas id="horizontalBarChart"></canvas>
             </div>
         </div>
@@ -138,7 +138,7 @@
     <script>
         // Sample data for the horizontal bar chart (Replace with your actual data)
         const horizontalBarChartData = {
-            labels: ['Children', 'Adolescents', 'Teenager', 'Adult', 'Older Adult'],
+            labels: ['Malaysian', 'Indonesian', 'Singaporean', 'Thai', 'Vietnamese'],
             datasets: [{
                 label: 'Number of Passengers',
                 backgroundColor: 'rgba(75, 192, 192, 0.5)',
@@ -150,7 +150,7 @@
 
         // Horizontal bar chart configuration
         const horizontalBarChartConfig = {
-            type: 'horizontalBar',
+            type: 'bar', // Change to 'bar' instead of 'horizontalBar'
             data: horizontalBarChartData,
             options: {
                 indexAxis: 'y', // Display the bar chart horizontally
